@@ -1,412 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>The Wedding of Indah & Arif</title>
-
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
   <style>
-    :root{
-      --bg:#fffdf8;
-      --text:#222;
-      --muted:#6b6b6b;
-      --gold:#d4af37;
-      --accent:#9aa18f;
-      --card:#ffffff;
-      --radius:14px;
-      --maxw:900px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
     body{
       margin:0;
-      font-family:"Poppins",system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
-      background:var(--bg);
-      color:var(--text);
+      font-family:"Poppins",sans-serif;
+      background:#fffdf8;
+      color:#333;
+      text-align:center;
       -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.45;
     }
-
-    /* container */
-    .wrap{max-width:var(--maxw);margin:0 auto;padding:24px}
-
-    /* Top nav */
-    nav{display:flex;gap:10px;justify-content:center;margin:18px 0 30px}
-    nav a{color:var(--muted);text-decoration:none;padding:8px 14px;border-radius:10px;font-weight:600}
-    nav a.active{color:var(--text);background:rgba(212,175,55,0.09);border:1px solid rgba(212,175,55,0.12)}
-
-    /* Cover */
-    .cover{
-      display:flex;flex-direction:column;align-items:center;justify-content:center;
-      height:72vh;border-radius:18px;position:relative;overflow:hidden;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
-        url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-      color:#fff;text-align:center;padding:28px;
+    h1{font-family:"Playfair Display",serif;font-size:46px;margin:10px 0;}
+    .container{padding:60px 20px;}
+    .btn{
+      display:inline-block;
+      background:#d4af37;
+      color:#111;
+      padding:12px 28px;
+      border-radius:999px;
+      font-weight:700;
+      text-decoration:none;
+      margin-top:24px;
     }
-    .overlay-dove{
-      position:absolute;inset:14px;pointer-events:none;
-      background-image:
-        radial-gradient(circle at 10% 10%, rgba(212,175,55,0.12), transparent 12%),
-        radial-gradient(circle at 90% 90%, rgba(212,175,55,0.08), transparent 10%);
-      mix-blend-mode:overlay;
-    }
-    .cover .label{font-size:14px;opacity:0.95}
-    .cover h1{font-family:"Playfair Display",serif;font-weight:700;font-size:48px;margin:10px 0 4px;letter-spacing:0.6px}
-    .cover p.date{margin:0 0 10px;font-weight:600}
-    .recipient{margin-top:8px;font-size:18px;background:rgba(255,255,255,0.06);padding:6px 12px;border-radius:20px}
-    .btn-open{margin-top:18px;background:var(--gold);color:#111;padding:10px 22px;border:none;border-radius:999px;font-weight:700;cursor:pointer}
-    .btn-open:active{transform:translateY(1px)}
-
-    /* main content area */
-    .page{display:none;padding:28px;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,0.85), rgba(254,248,238,1));box-shadow:0 10px 30px rgba(0,0,0,0.06)}
-    .page.active{display:block}
-    h2.title{font-family:"Playfair Display",serif;color:var(--gold);font-size:30px;margin:6px 0 12px}
-    .lead{color:var(--muted);margin-bottom:14px}
-    .card{background:var(--card);border-radius:12px;padding:18px;margin:14px 0;border:1px solid rgba(0,0,0,0.04)}
-    .names{font-size:20px;font-weight:600;color:#333;margin-bottom:8px}
-    .profile-pt{font-size:14px;color:var(--muted)}
-
-    /* grid for events */
-    .grid{display:grid;grid-template-columns:1fr;gap:16px}
-    @media(min-width:760px){ .grid{grid-template-columns:1fr 1fr} }
-
-    /* guestbook */
-    .guest-form{display:flex;flex-direction:column;gap:8px}
-    .guest-form input,.guest-form textarea{padding:10px;border-radius:8px;border:1px solid #e6e6e6;font-size:14px}
-    .guest-form button{background:var(--gold);border:none;padding:10px 14px;border-radius:10px;font-weight:700;cursor:pointer}
-
-    .messages{margin-top:12px;display:flex;flex-direction:column;gap:10px;max-height:340px;overflow:auto}
-    .msg{background:#fff;border-radius:10px;padding:12px;border-left:4px solid rgba(212,175,55,0.6)}
-    .msg strong{display:block;color:#333}
-
-    /* countdown */
-    .countdown{font-weight:700;color:var(--text);font-size:18px;margin-top:6px}
-    .countdown small{display:block;color:var(--muted);font-weight:600;margin-top:6px}
-
-    /* footer */
-    footer{margin:36px 0 14px;color:var(--muted);font-size:14px;text-align:center}
-
-    /* minimal icons small */
-    .meta{display:flex;gap:10px;align-items:center;justify-content:center;color:var(--muted);margin-top:8px;font-size:14px}
-    .meta svg{width:18px;height:18px;opacity:0.9}
-
+    .note{font-size:13px;color:#777;margin-top:14px;}
+    .recipient{margin-top:12px;font-weight:600;color:#555;}
+    .audio-control button{background:#fff;border:1px solid #eee;padding:10px 14px;border-radius:10px;cursor:pointer;}
   </style>
 </head>
-
 <body>
-  <div class="wrap">
-    <!-- Cover / Home -->
-    <div id="page-home" class="page active" style="padding:0">
-      <div class="cover" role="region" aria-label="Cover">
-        <div class="overlay-dove" aria-hidden="true"></div>
-
-        <p class="label">The Wedding of</p>
-        <h1>Indah &amp; Arif</h1>
-        <p class="date">December 3, 2025</p>
-
-        <div id="recipient" class="recipient" aria-live="polite"></div>
-
-        <button class="btn-open" id="openBtn">Open Invitation</button>
-
-        <div style="position:absolute;bottom:18px;text-align:center;width:100%;">
-          <div class="meta">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden><path d="M12 2l2 4 4 .6-3 2 1 4-4-2-4 2 1-4-3-2 4-.6L12 2z" fill="rgba(255,255,255,0.85)"/></svg>
-            <span style="color:rgba(255,255,255,0.9)">Click Open to enter</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Nav -->
-    <nav id="main-nav" aria-label="Main Navigation" style="display:none">
-      <a href="#home" data-target="home" class="active">Home</a>
-      <a href="#couple" data-target="couple">Bride &amp; Groom</a>
-      <a href="#akad" data-target="akad">Ceremony</a>
-      <a href="#reception" data-target="reception">Reception</a>
-      <a href="#wishes" data-target="wishes">Prayer & Wishes</a>
-      <a href="#countdown" data-target="countdown">Countdown</a>
-    </nav>
-
-    <!-- Content pages -->
-    <div id="page-couple" class="page" aria-hidden="true">
-      <h2 class="title">Bride &amp; Groom</h2>
-      <p class="lead">Meet the couple and their families.</p>
-
-      <div class="card">
-        <div class="names">👰 <strong>Nur Indah Sari, S.M.</strong></div>
-        <div class="profile-pt">Second daughter of Bapak Maggalatung &amp; (Almh.) Ibu Sumarni</div>
-      </div>
-
-      <div class="card">
-        <div class="names">🤵 <strong>Muhammad Arif, S.A.P.</strong></div>
-        <div class="profile-pt">Third son of Bapak H. Ruslan &amp; Ibu Hj. Nurlela</div>
-      </div>
-
-      <div style="text-align:center;margin-top:6px">
-        <button onclick="navigate('akad')" class="btn-open" style="background:var(--accent);color:#fff;border:none">View Ceremony Details</button>
-      </div>
-    </div>
-
-    <div id="page-akad" class="page" aria-hidden="true">
-      <h2 class="title">Ceremony (Akad Nikah)</h2>
-      <p class="lead">We humbly invite you to witness our solemnization.</p>
-
-      <div class="card">
-        <div style="text-align:center">
-          <div style="font-weight:700">Wednesday, December 3, 2025</div>
-          <div style="margin-top:6px;font-size:18px"><strong>11:00 WITA</strong></div>
-          <div class="meta" style="margin-top:10px">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden><path d="M12 2a10 10 0 100 20 10 10 0 000-20z" fill="#d4af37"/></svg>
-            <div style="text-align:left">Jl. Poros Kulampu–Solo, Dusun Aluppange, Desa Alewadeng, Kec. Sajoanging, Kab. Wajo</div>
-          </div>
-          <div style="margin-top:12px"><a href="https://maps.app.goo.gl/52bUetkWoo8VFB3g8" target="_blank" rel="noopener">Open in Google Maps</a></div>
-        </div>
-      </div>
-    </div>
-
-    <div id="page-reception" class="page" aria-hidden="true">
-      <h2 class="title">Reception</h2>
-      <p class="lead">Please join us for the reception immediately following the ceremony.</p>
-
-      <div class="card">
-        <div style="text-align:center">
-          <div style="font-weight:700">Wednesday, December 3, 2025</div>
-          <div style="margin-top:6px;font-size:18px"><strong>11:00 WITA – Until finish</strong></div>
-          <div style="margin-top:12px">Venue: Same as ceremony</div>
-        </div>
-      </div>
-    </div>
-
-    <div id="page-wishes" class="page" aria-hidden="true">
-      <h2 class="title">Prayer & Wishes</h2>
-      <p class="lead">We appreciate your prayers and kind wishes.</p>
-
-      <div class="card">
-        <blockquote style="margin:0 0 6px;font-size:16px">بَارَكَ اللَّهُ لَكَ، وَبَارَكَ عَلَيْكَ، وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</blockquote>
-        <div style="color:var(--muted);margin-top:8px">Barakallahu laka wa baraka 'alaika wajama'a bainakuma fii khairin</div>
-      </div>
-
-      <div class="card" aria-live="polite">
-        <h3 style="margin:0 0 8px">Guestbook — leave your name & wish</h3>
-        <form id="guestForm" class="guest-form" autocomplete="off">
-          <input id="guestName" type="text" placeholder="Your name" required />
-          <textarea id="guestMsg" rows="4" placeholder="Your prayer or short message" required></textarea>
-          <div style="display:flex;gap:8px;justify-content:center">
-            <button type="submit">Send Wish</button>
-            <button type="button" id="clearAll" style="background:#eee;color:#333;border:none;padding:10px 12px;border-radius:10px;cursor:pointer">Clear Local</button>
-          </div>
-        </form>
-
-        <div id="messages" class="messages" aria-live="polite" style="margin-top:14px"></div>
-      </div>
-    </div>
-
-    <div id="page-countdown" class="page" aria-hidden="true">
-      <h2 class="title">Countdown</h2>
-      <p class="lead">Counting down to our special day.</p>
-
-      <div class="card" style="text-align:center">
-        <div id="countdownDisplay" class="countdown">— days — : — : —</div>
-        <small>Event starts: December 3, 2025 — 11:00 WITA</small>
-      </div>
-    </div>
-
-    <footer>
-      <div style="font-size:13px;color:var(--muted)">With gratitude — <strong>Nur Indah Sari &amp; Muhammad Arif</strong></div>
-      <div style="margin-top:8px;color:var(--muted)">Use the link with ?to=Name to personalize (e.g. <code>?to=Fitriani</code>)</div>
-    </footer>
+  <div class="container">
+    <h1>The Wedding of<br>Indah &amp; Arif</h1>
+    <p>December 3, 2025</p>
+    <div id="recipient" class="recipient"></div>
+    <a id="openBtn" class="btn">Open Invitation</a>
+    <p class="note">Music will begin automatically (please allow audio in your browser).</p>
+    <div id="musicControl" class="audio-control"></div>
   </div>
 
-  <!-- audio (music stored remotely). If You want to supply HQ music locally, replace src with music/romantic-piano.mp3 -->
-  <audio id="bgMusic" src="https://cdn.pixabay.com/download/audio/2022/03/22/audio_2b4d589358.mp3?filename=romantic-piano-11290.mp3" preload="auto"></audio>
+  <audio id="bgAudio" src="soft-piano-music-10-minutes-long-231315.mp3" loop></audio>
 
   <script>
-    // --- Utilities & Navigation (single-file multi-page SPA using hash)
-    const pages = {
-      home: document.getElementById('page-home'),
-      couple: document.getElementById('page-couple'),
-      akad: document.getElementById('page-akad'),
-      reception: document.getElementById('page-reception'),
-      wishes: document.getElementById('page-wishes'),
-      countdown: document.getElementById('page-countdown')
-    };
-    const nav = document.getElementById('main-nav');
-    const navLinks = nav.querySelectorAll('a');
-
-    function showNav(){ nav.style.display='flex' }
-    function hideNav(){ nav.style.display='none' }
-
-    function setActive(target){
-      // show/hide pages
-      for(const k in pages){
-        if(k===target) { pages[k].classList.add('active'); pages[k].removeAttribute('aria-hidden') }
-        else { pages[k].classList.remove('active'); pages[k].setAttribute('aria-hidden','true') }
-      }
-      // nav link active
-      navLinks.forEach(a=> a.classList.toggle('active', a.dataset.target===target));
-    }
-
-    // when calling navigate from code
-    function navigate(target){
-      location.hash = target;
-    }
-
-    // respond to hash changes
-    function onHash(){
-      const hash = (location.hash || '#home').replace('#','');
-      setActive(hash in pages ? hash : 'home');
-    }
-    window.addEventListener('hashchange', onHash);
-
-    // init: hide content, show nav only after open
-    onHash();
-
-    // --- Recipient name (from ?to=Name)
+    // show recipient name
     const params = new URLSearchParams(location.search);
-    const recipientName = params.get('to');
-    const recipientEl = document.getElementById('recipient');
-    if(recipientName){
-      recipientEl.textContent = `Dear ${decodeURIComponent(recipientName)}`;
-    } else {
-      recipientEl.textContent = '';
-    }
+    const to = params.get('to');
+    if(to) document.getElementById('recipient').textContent = 'Dear ' + decodeURIComponent(to);
 
-    // --- Music & open button logic
-    const openBtn = document.getElementById('openBtn');
-    const contentPages = document.querySelectorAll('.page');
-    const music = document.getElementById('bgMusic');
-
-    openBtn.addEventListener('click', function(){
-      // Hide cover, show nav & home page content
-      document.getElementById('page-home').classList.remove('active');
-      document.getElementById('page-home').setAttribute('aria-hidden','true');
-      showNav();
-      navigate('couple'); // go to couple page as entry
-      // attempt to play music (user gesture)
-      music.volume = 0.9;
-      const p = music.play();
-      if(p !== undefined){
-        p.catch(()=>{/* autoplay blocked; will remain silent until user interacts */});
-      }
-      // set focus to content top
-      window.scrollTo({top:0,behavior:'smooth'});
+    // autoplay attempt
+    const audio = document.getElementById('bgAudio');
+    audio.volume = 0.8;
+    const tryPlay = audio.play();
+    if(tryPlay) tryPlay.catch(()=>{
+      const btn = document.createElement('button');
+      btn.textContent = '🎵 Play Music';
+      btn.onclick = ()=>{ audio.play(); btn.remove(); };
+      document.getElementById('musicControl').appendChild(btn);
     });
 
-    // If hash is home on page load: show cover; otherwise show nav & page
-    if(location.hash && location.hash !== '#home'){
-      // show nav and corresponding page
-      showNav();
-      onHash();
-    } else {
-      hideNav();
-      // ensure home visible (already)
-    }
-
-    // allow nav click to navigate
-    navLinks.forEach(a=>{
-      a.addEventListener('click', (e)=>{
-        e.preventDefault();
-        const t = a.dataset.target;
-        navigate(t);
-      })
-    });
-
-    // --- Guestbook stored in localStorage (public within same origin)
-    const storageKey = 'indah_arif_guestbook_v1';
-    const guestForm = document.getElementById('guestForm');
-    const guestName = document.getElementById('guestName');
-    const guestMsg = document.getElementById('guestMsg');
-    const messagesDiv = document.getElementById('messages');
-    const clearBtn = document.getElementById('clearAll');
-
-    function loadMessages(){
-      const raw = localStorage.getItem(storageKey);
-      let arr = [];
-      try { arr = raw ? JSON.parse(raw) : []; } catch(e){ arr = [] }
-      // show newest first
-      messagesDiv.innerHTML = '';
-      arr.slice().reverse().forEach(item=>{
-        const el = document.createElement('div');
-        el.className = 'msg';
-        el.innerHTML = `<strong>${escapeHtml(item.name)}</strong><div style="color:var(--muted);margin-top:6px">${escapeHtml(item.message)}</div><div style="margin-top:8px;font-size:12px;color:#999">${new Date(item.t).toLocaleString()}</div>`;
-        messagesDiv.appendChild(el);
-      });
-    }
-
-    function saveMessage(name,msg){
-      const raw = localStorage.getItem(storageKey);
-      let arr = [];
-      try{ arr = raw ? JSON.parse(raw) : [] } catch(e){ arr = [] }
-      arr.push({name:name, message:msg, t:Date.now()});
-      try{ localStorage.setItem(storageKey, JSON.stringify(arr)) } catch(e){ console.warn('Storage failed', e) }
-      loadMessages();
-    }
-
-    guestForm.addEventListener('submit', (e)=>{
-      e.preventDefault();
-      const n = guestName.value.trim();
-      const m = guestMsg.value.trim();
-      if(!n || !m) return;
-      saveMessage(n,m);
-      guestForm.reset();
-      // small visual feedback
-      guestForm.querySelector('button[type="submit"]').textContent = 'Sent ✓';
-      setTimeout(()=>{ guestForm.querySelector('button[type="submit"]').textContent = 'Send Wish' },1200);
-    });
-
-    clearBtn.addEventListener('click', ()=>{
-      if(confirm('Clear all guestbook entries from this browser? This will remove localStorage entries.')) {
-        localStorage.removeItem(storageKey); loadMessages();
-      }
-    });
-
-    // escape simple
-    function escapeHtml(s){return String(s).replace(/[&<>"']/g, function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]})}
-
-    // init messages
-    loadMessages();
-
-    // --- Countdown
-    // Wedding: Dec 3, 2025 11:00 WITA (WITA = UTC+8) => build Date in local timezone from that moment
-    // We'll compute target timestamp using Date.UTC with offset +8
-    function getTargetTimestamp(){
-      // Year, monthIndex (0-11), date, hours, minutes, seconds in UTC
-      // 2025-12-03 11:00 WITA -> UTC = 11:00 - 8 = 03:00 UTC
-      // So build UTC date: 2025-12-03 03:00:00 UTC
-      return Date.UTC(2025, 11, 3, 3, 0, 0); // month 11 = December
-    }
-    const targetTS = getTargetTimestamp();
-    const cdDisplay = document.getElementById('countdownDisplay');
-
-    function updateCountdown(){
-      const now = Date.now();
-      let diff = targetTS - now;
-      if(diff <= 0){
-        cdDisplay.textContent = 'Wedding Day — Congratulations!';
-        return;
-      }
-      const days = Math.floor(diff / (1000*60*60*24));
-      diff -= days * (1000*60*60*24);
-      const hours = Math.floor(diff / (1000*60*60));
-      diff -= hours * (1000*60*60);
-      const minutes = Math.floor(diff / (1000*60));
-      diff -= minutes * (1000*60);
-      const seconds = Math.floor(diff / 1000);
-      cdDisplay.textContent = `${days} days · ${String(hours).padStart(2,'0')} : ${String(minutes).padStart(2,'0')} : ${String(seconds).padStart(2,'0')}`;
-    }
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-
-    // Accessibility: allow ENTER on open button to act as click
-    openBtn.addEventListener('keyup', (e)=>{ if(e.key==='Enter'){ openBtn.click() } });
-
-    // End script
+    // open invitation
+    document.getElementById('openBtn').onclick = ()=>{
+      const dest = 'invitation.html' + (to ? '?to=' + encodeURIComponent(to) : '');
+      location.href = dest;
+    };
   </script>
 </body>
 </html>
